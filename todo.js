@@ -1,51 +1,44 @@
 
 
-document.querySelector('#btn1').addEventListener('click', onClick1);
-document.querySelector('#btn2').addEventListener('click', onClick2);
-document.querySelector('#btn3').addEventListener('click', onClick3);
-document.querySelector('.clear-tasks').addEventListener('click', onClick4);
+document.querySelector('#btn1').addEventListener('click', addItemToList);
+document.querySelector('#btn2').addEventListener('click', addItemToList);
+document.querySelector('#btn3').addEventListener('click', addItemToList);
+document.querySelector('.clear-tasks').addEventListener('click', remover);
 
 
-// const onClick = () => {
-// 	console.log('Clicked')
-// };
-// nie wiem czemu arrow function tutaj nie działa
-
-
-//Na pewno istnieje prostsza metoda na dodawanie nowych "różnych" li, niż tworzenie osobnej funkcji dla każdego przycisku.
-function onClick1(){
+function addItemToList(){
 	console.log('Clicked');
 	const li = document.createElement('li');
 	li.className = 'collection-item';
 	li.setAttribute('title', 'Item');
-	li.appendChild(document.createTextNode('ITEM 1'))
+	
+	let v = this.id;
+	
+	console.log(v);
+	switch (v) {
+		case 'btn1':
+			li.appendChild(document.createTextNode('ITEM 1'));
+			break;
+		case 'btn2':
+			li.appendChild(document.createTextNode('ITEM 2'));
+			break;
+		case 'btn3':
+			li.appendChild(document.createTextNode('ITEM 3'));
+			break;
+		default:
+			li.appendChild(document.createTextNode('NOT SPECIFIC EXCUSE'));
+	}
+
 	document.querySelector('ul.collection').appendChild(li);
 	console.log(li);
 	};
 
-function onClick2(){
-	console.log('Clicked');
-	const li = document.createElement('li');
-	li.className = 'collection-item';
-	li.setAttribute('title', 'Item');
-	li.appendChild(document.createTextNode('ITEM 2'))
-	document.querySelector('ul.collection').appendChild(li);
-	console.log(li);
-	};
-
-function onClick3(){
-	console.log('Clicked');
-	const li = document.createElement('li');
-	li.className = 'collection-item';
-	li.setAttribute('title', 'Item');
-	li.appendChild(document.createTextNode('ITEM 3'))
-	document.querySelector('ul.collection').appendChild(li);
-	console.log(li);
-	};
-
-function onClick4(a){
+function remover(){
 	const list = document.querySelectorAll('li');
 	list[0].remove();
+	// list.forEach(el => el.remove());
+	for (let i=0; i<list.length; i++){
+		list[i].remove();
+		}
 	};
 
-	// nie mogę ustalić jak powinna wyglądać funkcja usuwająca wszystkie li z listy (bez niszczenia samej ul).
