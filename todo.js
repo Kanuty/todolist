@@ -11,23 +11,11 @@ function addItemToList(){
 	const li = document.createElement('li');
 	li.className = 'collection-item';
 	li.setAttribute('title', 'Item');
-	
-	let v = this.id;
-	
-	console.log(v);
-	switch (v) {
-		case 'btn1':
-			li.appendChild(document.createTextNode('ITEM 1'));
-			break;
-		case 'btn2':
-			li.appendChild(document.createTextNode('ITEM 2'));
-			break;
-		case 'btn3':
-			li.appendChild(document.createTextNode('ITEM 3'));
-			break;
-		default:
-			li.appendChild(document.createTextNode('NOT SPECIFIC EXCUSE'));
-	}
+
+	let value = this.value;
+	let valueU = value.toUpperCase();
+	li.appendChild(document.createTextNode(valueU));
+
 
 	document.querySelector('ul.collection').appendChild(li);
 	console.log(li);
